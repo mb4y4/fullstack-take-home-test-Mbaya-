@@ -23,7 +23,7 @@ const SearchPage = () => {
       <SearchBar setSearchResults={setSearchResults} />
       <Grid container spacing={2}>
         {searchResults.map((book) => (
-          <Grid item xs={12} sm={6} md={4} key={book.id}>
+          <Grid item xs={12} sm={6} md={3} key={book.id}>
             <BookCard book={book} onAdd={handleAddToReadingList} />
           </Grid>
         ))}
