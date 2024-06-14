@@ -1,7 +1,7 @@
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
-import { Grid } from '@mui/material';
-import BookCard from '../components/BookCard';
+import React from "react";
+import { useQuery, gql } from "@apollo/client";
+import { Grid } from "@mui/material";
+import BookCard from "../components/BookCard";
 
 const BOOKS_QUERY = gql`
   query Books {

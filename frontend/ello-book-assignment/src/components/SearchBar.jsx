@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { useQuery, gql } from '@apollo/client';
-import { TextField, Button, Grid } from '@mui/material';
+import React, { useState } from "react";
+import { useQuery, gql } from "@apollo/client";
+import { TextField, Button, Grid } from "@mui/material";
 
 const BOOKS_QUERY = gql`
-    query Books {
+  query Books {
     books {
-        id
-        title
-        author
-        coverPhotoURL
-        readingLevel
+      id
+      title
+      author
+      coverPhotoURL
+      readingLevel
     }
-    }
+  }
 `;
 
 const SearchBar = ({ setSearchResults }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const { data, loading, error } = useQuery(BOOKS_QUERY);
 
   const handleSearch = () => {
@@ -29,7 +29,7 @@ const SearchBar = ({ setSearchResults }) => {
 
   if (loading) return <p>Loading...</p>;
   return (
-    <Grid container justifyContent="center" style={{ marginBottom: '20px' }}>
+    <Grid container justifyContent="center" style={{ marginBottom: "20px" }}>
       <Grid item xs={12} sm={8} md={6}>
         <TextField
           label="Search Books"
@@ -44,7 +44,12 @@ const SearchBar = ({ setSearchResults }) => {
           variant="contained"
           color="primary"
           onClick={handleSearch}
-          style={{ marginTop: '10px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }}
+          style={{
+            marginTop: "10px",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
         >
           Search
         </Button>

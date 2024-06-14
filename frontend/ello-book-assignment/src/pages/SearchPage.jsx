@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Grid } from '@mui/material';
-import SearchBar from '../components/SearchBar';
-import BookCard from '../components/BookCard';
-import ReadingList from '../components/ReadingList';
+import React, { useState } from "react";
+import { Grid } from "@mui/material";
+import SearchBar from "../components/SearchBar";
+import BookCard from "../components/BookCard";
+import ReadingList from "../components/ReadingList";
 
 const SearchPage = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -13,7 +13,9 @@ const SearchPage = () => {
   };
 
   const handleRemoveFromReadingList = (book) => {
-    setReadingList((prevList) => prevList.filter((item) => item.title !== book.title));
+    setReadingList((prevList) =>
+      prevList.filter((item) => item.title !== book.title)
+    );
   };
 
   return (
