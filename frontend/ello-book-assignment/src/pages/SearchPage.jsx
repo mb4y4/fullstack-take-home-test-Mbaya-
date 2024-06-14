@@ -1,19 +1,15 @@
-import React, { useContext } from 'react';
-import { Grid } from '@mui/material';
-import SearchBar from '../components/SearchBar';
-import BookCard from '../components/BookCard';
-import ReadingList from '../components/ReadingList';
-import { SearchContext } from '../contexts/SearchContext';
+import React, { useContext } from "react";
+import { Grid } from "@mui/material";
+import SearchBar from "../components/SearchBar";
+import BookCard from "../components/BookCard";
+import { SearchContext } from "../contexts/SearchContext";
 
 const SearchPage = () => {
-  const { searchResults, setSearchResults, readingList, setReadingList } = useContext(SearchContext);
+  const { searchResults, setSearchResults, setReadingList } =
+    useContext(SearchContext);
 
   const handleAddToReadingList = (book) => {
     setReadingList((prevList) => [...prevList, book]);
-  };
-
-  const handleRemoveFromReadingList = (book) => {
-    setReadingList((prevList) => prevList.filter((item) => item.title !== book.title));
   };
 
   return (
@@ -26,7 +22,6 @@ const SearchPage = () => {
           </Grid>
         ))}
       </Grid>
-      <ReadingList books={readingList} onRemove={handleRemoveFromReadingList} />
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useQuery, gql } from "@apollo/client";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import BookCard from "../components/BookCard";
-import { SearchContext } from '../contexts/SearchContext';
+import { SearchContext } from "../contexts/SearchContext";
 
 const BOOKS_QUERY = gql`
   query Books {
@@ -16,21 +16,27 @@ const BOOKS_QUERY = gql`
 `;
 
 const HomePage = () => {
-  const { readingList, setReadingList } = useContext(SearchContext);
+  const { addToReadingList } = useContext(SearchContext);
   const { data, loading, error } = useQuery(BOOKS_QUERY);
 
-  const handleAddToReadingList = (book) => {
-    setReadingList((prevList) => [...prevList, book]);
-  };
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading)
+    return (
+      <Typography variant="h6" align="center">
+        Loading...
+      </Typography>
+    );
+  if (error)
+    return (
+      <Typography variant="h6" align="center">
+        Error: {error.message}
+      </Typography>
+    );
 
   return (
     <Grid container spacing={2} justifyContent="center">
       {data.books.map((book) => (
         <Grid item xs={12} sm={6} md={3} key={book.id}>
-          <BookCard book={book} onAdd={handleAddToReadingList} />
+          <BookCard book={book} onAdd={addToReadingList} />
         </Grid>
       ))}
     </Grid>
