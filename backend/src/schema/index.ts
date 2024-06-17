@@ -8,7 +8,18 @@ export const typeDefs = `#graphql
   }
 
   type Query {
-    books: [Book]
-  }
+  books(filter: BookFilter): [Book]
+}
+
+input BookFilter {
+  title_contains: String
+}
+
+type Book {
+  id: ID!
+  title: String!
+  author: String!
+  coverPhotoURL: String!
+}
 `;
 

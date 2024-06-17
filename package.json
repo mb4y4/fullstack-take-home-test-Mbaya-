@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@graphql-tools/schema": "^10.0.4"
+  }
+}
